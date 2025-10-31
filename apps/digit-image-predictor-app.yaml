@@ -4,7 +4,6 @@ metadata:
   name: digit-image-predictor-app
   namespace: argocd
   annotations:
-    # Use sync-wave 2 for the main app. This ensures it only starts after RabbitMQ (sync-wave 1) is healthy.
     argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default

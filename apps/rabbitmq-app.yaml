@@ -1,24 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rabbitmq
+  name: rabbitmq-instance
   namespace: argocd
   annotations:
-    # Use sync-wave 1 for dependencies. This ensures it's deployed first.
-    argocd.argoproj.io/sync-wave: "1" 
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 16.x.x
-    chart: rabbitmq
-    helm:
-      values: |
-        replicaCount: 1
-        image:
-          registry: docker.io
-          repository: rabbitmq
-          tag: 4-management
+    repoURL: https://github.com/Alkamist/mnist-digit-predictor-argocd
+    targetRevision: HEAD
+    path: apps/rabbitmq-instance
   destination:
     server: https://kubernetes.default.svc
     namespace: dependencies
