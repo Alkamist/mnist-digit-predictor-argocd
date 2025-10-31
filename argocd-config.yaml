@@ -4,7 +4,7 @@ metadata:
   name: platform-infrastructure
   namespace: argocd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io/background
 spec:
   source:
     repoURL: https://github.com/Alkamist/mnist-digit-predictor-argocd
