@@ -16,7 +16,9 @@ spec:
       values: |
         replicaCount: 1
         image:
-          tag: latest
+          registry: docker.io
+          repository: rabbitmq
+          tag: "4-management"
   destination:
     server: https://kubernetes.default.svc
     namespace: dependencies
