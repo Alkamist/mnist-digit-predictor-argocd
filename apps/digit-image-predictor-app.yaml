@@ -10,7 +10,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Alkamist/mnist-digit-predictor.git
+    repoURL: https://github.com/Alkamist/mnist-digit-predictor
     targetRevision: HEAD
     path: helm-chart
     helm:
