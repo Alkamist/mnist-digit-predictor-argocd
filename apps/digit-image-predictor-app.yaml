@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: digit-image-predictor-app
+  namespace: argocd
+  annotations:
+    # Use sync-wave 2 for the main app. This ensures it only starts after RabbitMQ (sync-wave 1) is healthy.
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Alkamist/mnist-digit-predictor.git
+    targetRevision: HEAD
+    path: helm-chart
+    helm:
+      values: |
+        server:
+          replicaCount: 1
+          runLocally: true
+        worker:
+          replicaCount: 1
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging-apps
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
