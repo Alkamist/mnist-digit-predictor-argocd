@@ -520,59 +520,50 @@
 	"buffers":
 	[
 		{
-			"contents": "apiVersion: argoproj.io/v1alpha1\nkind: Application\nmetadata:\n  name: rabbitmq-staging\n  namespace: argocd\n  annotations:\n    # Use sync-wave 1 for dependencies. This ensures it's deployed first.\n    argocd.argoproj.io/sync-wave: \"1\" \nspec:\n  project: default\n\n  source:\n    repoURL: https://charts.bitnami.com/bitnami\n    targetRevision: 14.x.x # Pin to a specific chart version\n    chart: rabbitmq\n    helm:\n      # Example of overriding default values\n      values: |\n        replicaCount: 1\n        auth:\n          username: user\n          password: password-secret\n          existingPasswordSecret: \"\" # Use this if you have a pre-existing secret\n          \n  destination:\n    server: https://kubernetes.default.svc\n    namespace: staging-dependencies # Deploy RabbitMQ into this namespace\n    \n  syncPolicy:\n    automated:\n      prune: true\n      selfHeal: true\n    syncOptions:\n      - CreateNamespace=true",
-			"file": "apps/rabbit-mq-app.yaml",
-			"file_size": 947,
-			"file_write_time": 134064066323149405,
+			"file": "apps/rabbitmq-app.yaml",
 			"settings":
 			{
-				"buffer_size": 912,
+				"buffer_size": 622,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			},
 			"undo_stack":
 			[
 				[
-					3,
+					15,
 					1,
 					"paste",
 					null,
-					"AQAAAAAAAAAAAAAA7AMAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					6,
-					1,
-					"left_delete",
-					null,
-					"AQAAAAAAAAAAAAAAAAAAAAAAAABQAAAAIyBUaGlzIEFwcGxpY2F0aW9uIGRlcGxveXMgdGhlIFJhYmJpdE1RIGRlcGVuZGVuY3kgdXNpbmcgdGhlIEJpdG5hbWkgSGVsbSBDaGFydC4",
-					"AQAAAAAAAAABAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					11,
-					2,
-					"left_delete",
-					null,
-					"AgAAAAEAAAAAAAAAAQAAAAAAAAABAAAACgAAAAAAAAAAAAAAAAAAAAABAAAACg",
-					"AQAAAAAAAAABAAAAAgAAAAAAAAACAAAAAAAAAAAAAAAAAPC/"
+					"AQAAABMBAAAAAAAANQEAAAAAAAA8AAAAaHR0cHM6Ly9naXRodWIuY29tL2JpdG5hbWkvY2hhcnRzL3RyZWUvbWFpbi9iaXRuYW1pL3JhYmJpdG1x",
+					"AQAAAAAAAAABAAAATwEAAAAAAAATAQAAAAAAAAAAAAAAAPC/"
 				],
 				[
 					18,
-					2,
-					"left_delete",
+					1,
+					"paste",
 					null,
-					"AgAAAJMDAAAAAAAAkwMAAAAAAAAHAAAAICAgICAgCpIDAAAAAAAAkgMAAAAAAAABAAAACg",
-					"AQAAAAAAAAABAAAAmgMAAAAAAACTAwAAAAAAAAAAAAAAAPC/"
+					"AQAAAEoBAAAAAAAAUAEAAAAAAAAGAAAAMi4zMS4z",
+					"AQAAAAAAAAABAAAAUAEAAAAAAABKAQAAAAAAAAAAAAAAAPC/"
 				],
 				[
-					21,
+					23,
 					1,
-					"left_delete",
-					null,
-					"AQAAAAMBAAAAAAAAAwEAAAAAAAACAAAAICA",
-					"AQAAAAAAAAABAAAABQEAAAAAAAAFAQAAAAAAAAAAAAAAAPC/"
+					"insert",
+					{
+						"characters": "6"
+					},
+					"AQAAAEsBAAAAAAAATAEAAAAAAAABAAAANA",
+					"AQAAAAAAAAABAAAATAEAAAAAAABLAQAAAAAAAAAAAAAAAPC/"
 				]
 			]
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
@@ -847,21 +838,25 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/corey/Documents/digit-image-predictor-argo",
-		"/C/Users/corey/Documents/digit-image-predictor-argo/apps"
+		"/C/Users/corey/Documents/digit-image-predictor-argocd",
+		"/C/Users/corey/Documents/digit-image-predictor-argocd/apps"
 	],
 	"file_history":
 	[
+		"/C/Users/corey/Documents/digit-image-predictor-argocd/apps/digit-image-predictor-app.yaml",
+		"/C/Users/corey/Documents/digit-image-predictor-argocd/argocd-config.yaml",
+		"/C/Users/corey/Documents/digit-image-predictor-argocd/sublime_odin.sublime-project",
+		"/C/Users/corey/Documents/digit-image-predictor/helm-chart/values.yaml",
+		"/C/Users/corey/Documents/digit-image-predictor-argocd/apps/rabbit-mq-app.yaml",
+		"/C/Users/corey/Documents/digit-image-predictor/rabbitmq-instance.yaml",
 		"/C/Users/corey/Documents/digit-image-predictor-argo/argocd-config.yaml",
 		"/C/Users/corey/Documents/digit-image-predictor/helm-chart/templates/worker.yaml",
 		"/C/Users/corey/Documents/digit-image-predictor/helm-chart/templates/server.yaml",
-		"/C/Users/corey/Documents/digit-image-predictor/helm-chart/values.yaml",
 		"/C/Users/corey/Documents/digit-image-predictor/push.bat",
 		"/C/Users/corey/Documents/digit-image-predictor/build.bat",
 		"/C/Users/corey/Documents/digit-image-predictor/server/main.go",
 		"/C/Users/corey/Documents/digit-image-predictor/frontend/index.html",
 		"/C/Users/corey/Documents/digit-image-predictor/worker/main.odin",
-		"/C/Users/corey/Documents/digit-image-predictor/rabbitmq-instance.yaml",
 		"/C/Users/corey/Documents/digit-image-predictor/helm-chart/Chart.yaml",
 		"/C/Users/corey/Documents/digit-image-predictor/helm-chart/templates/rabbitmq.yaml",
 		"/C/Users/corey/Documents/digit-image-predictor/worker/Dockerfile",
@@ -975,15 +970,11 @@
 		"/C/Users/corey/Documents/OdinStuff/game_testing/src/serialization/writer.odin",
 		"/C/Users/corey/Documents/OdinStuff/game_testing/src/serializer/reader.odin",
 		"/C/Users/corey/Documents/OdinStuff/game_testing/src/serializer/writer.odin",
-		"/C/Users/corey/Documents/OdinStuff/game_testing/src/serializer/serializer - Copy.odin",
-		"/C/odin/core/mem/mem.odin",
-		"/C/Users/corey/Documents/OdinStuff/game_testing/src/serialization.odin",
-		"/C/odin/core/strconv/strconv.odin",
-		"/C/odin/core/strconv/integers.odin"
+		"/C/Users/corey/Documents/OdinStuff/game_testing/src/serializer/serializer - Copy.odin"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -997,6 +988,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"staging",
 			"host",
 			"HOST",
 			"PORT",
@@ -1123,8 +1115,7 @@
 			"renderer.texture",
 			"enabled_colors",
 			"Enabled_Colors",
-			"current_font",
-			"window"
+			"current_font"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1276,28 +1267,57 @@
 			[
 				{
 					"buffer": 0,
-					"file": "apps/rabbit-mq-app.yaml",
-					"selected": true,
+					"file": "apps/rabbitmq-app.yaml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 912,
+						"buffer_size": 622,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								259,
-								259
+								50,
+								50
 							]
 						],
 						"settings":
 						{
-							"lsp_uri": "file:///C:/Users/corey/Documents/digit-image-predictor-argo/apps/rabbit-mq-app.yaml",
+							"lsp_uri": "file:///C:/Users/corey/Documents/digit-image-predictor-argocd/apps/rabbitmq-app.yaml",
 							"syntax": "Packages/YAML/YAML.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"lsp_uri": "buffer:103",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

@@ -8,7 +8,6 @@ metadata:
     argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default
-
   source:
     repoURL: https://github.com/Alkamist/mnist-digit-predictor
     targetRevision: HEAD
@@ -20,11 +19,9 @@ spec:
           runLocally: true
         worker:
           replicaCount: 1
-
   destination:
     server: https://kubernetes.default.svc
-    namespace: staging-apps
-
+    namespace: apps
   syncPolicy:
     automated:
       prune: true
