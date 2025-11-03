@@ -15,7 +15,7 @@ spec:
       values: |
         server:
           replicaCount: 1
-          runLocally: true
+          runLocally: false
         worker:
           replicaCount: 1
   destination:
