@@ -1,4 +1,19 @@
 apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: cors-headers
+  namespace: default
+spec:
+  headers:
+    accessControlAllowMethods:
+      - "POST"
+      - "OPTIONS"
+    accessControlAllowOriginList:
+      - "*" # Frontend URL, temporarily * for testing
+    accessControlMaxAge: 100
+    addVaryHeader: true
+---
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: api-ingressroute
@@ -12,3 +27,6 @@ spec:
       services:
         - name: digit-image-predictor-app-service
           port: 80
+      middlewares:
+        - name: cors-headers
+          namespace: default
