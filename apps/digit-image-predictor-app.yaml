@@ -15,7 +15,6 @@ spec:
       values: |
         server:
           replicaCount: 1
-          runLocally: false
           resources:
             limits:
               memory: "128Mi"
