@@ -25,7 +25,6 @@ spec:
             hostPort: 80
             expose: 
               default: true
-            redirectTo: websecure
           websecure:
             port: 443
             hostPort: 443
