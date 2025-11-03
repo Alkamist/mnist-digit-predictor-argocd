@@ -32,9 +32,6 @@ spec:
           namespace: default
     - match: Host(`172.168.84.5`) && PathPrefix(`/predict`) && Method(`OPTIONS`)
       kind: Rule
-      services:
-        - name: digit-image-predictor-app-service 
-          port: 80
       middlewares:
         - name: cors-headers
           namespace: default
