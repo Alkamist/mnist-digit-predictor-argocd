@@ -12,6 +12,8 @@ spec:
       - "*" # Frontend URL, temporarily * for testing
     accessControlMaxAge: 100
     addVaryHeader: true
+    accessControlAllowHeaders:
+      - "*"
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
