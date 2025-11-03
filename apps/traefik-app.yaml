@@ -19,6 +19,22 @@ spec:
             publishedService: "traefik/traefik"
         service:
           type: LoadBalancer
+        ports:
+          web:
+            port: 80
+            hostPort: 80
+            expose: true
+            redirectTo: websecure
+          websecure:
+            port: 443
+            hostPort: 443
+            expose: true
+            tls:
+              enabled: true
+        additionalArguments:
+          - "--certificatesresolvers.le.acme.email=business.coreylehman@gmail.com"
+          - "--certificatesresolvers.le.acme.storage=/data/acme.json"
+          - "--certificatesresolvers.le.acme.tlschallenge=true"
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik

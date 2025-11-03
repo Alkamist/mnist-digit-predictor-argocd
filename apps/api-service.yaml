@@ -10,7 +10,7 @@ spec:
       - "POST"
       - "OPTIONS"
     accessControlAllowOriginList:
-      - "*"
+      - "https://www.digitimagepredictor.com"
     accessControlAllowHeaders:
       - "Content-Type"
       - "Authorization"
@@ -25,9 +25,9 @@ metadata:
   namespace: default
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - match: Host(`172.168.84.5`) && PathPrefix(`/predict`)
+    - match: Host(`api.digitimagepredictor.com`) && PathPrefix(`/predict`)
       kind: Rule
       services:
         - name: digit-image-predictor-app-service
@@ -35,3 +35,5 @@ spec:
       middlewares:
         - name: cors-headers
           namespace: default
+  tls:
+    certResolver: le
