@@ -6,14 +6,17 @@ metadata:
 spec:
   headers:
     accessControlAllowMethods:
+      - "GET"
       - "POST"
       - "OPTIONS"
     accessControlAllowOriginList:
-      - "*" # Frontend URL, temporarily * for testing
+      - "*"
+    accessControlAllowHeaders:
+      - "Content-Type"
+      - "Authorization"
     accessControlMaxAge: 100
     addVaryHeader: true
-    accessControlAllowHeaders:
-      - "*"
+    accessControlAllowCredentials: false
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -24,16 +27,11 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`172.168.84.5`) && PathPrefix(`/predict`) && Method(`POST`)
+    - match: Host(`172.168.84.5`) && PathPrefix(`/predict`)
       kind: Rule
       services:
         - name: digit-image-predictor-app-service
           port: 80
-      middlewares:
-        - name: cors-headers
-          namespace: default
-    - match: Host(`172.168.84.5`) && PathPrefix(`/predict`) && Method(`OPTIONS`)
-      kind: Rule
       middlewares:
         - name: cors-headers
           namespace: default
