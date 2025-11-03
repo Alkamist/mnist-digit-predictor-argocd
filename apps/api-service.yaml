@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: api-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`172.168.84.5`) && PathPrefix(`/predict`) && Method(`POST`)
+      kind: Rule
+      services:
+        - name: digit-image-predictor-app-service
+          port: 80
