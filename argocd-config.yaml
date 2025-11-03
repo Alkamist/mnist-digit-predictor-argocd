@@ -7,7 +7,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io/background
 spec:
   source:
-    repoURL: https://github.com/Alkamist/mnist-digit-predictor-argocd
+    repoURL: https://github.com/Alkamist/digit-image-predictor-argocd
     targetRevision: HEAD
     path: apps
   destination:
