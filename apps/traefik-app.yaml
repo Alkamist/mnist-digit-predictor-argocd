@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/background
+spec:
+  project: default
+  source:
+    repoURL: https://helm.traefik.io/traefik
+    targetRevision: 37.2.0
+    chart: traefik
+    helm:
+      values: |
+        ingressClass:
+          enabled: true
+          isDefaultClass: true
+        kubernetes:
+          ingressEndpoint:
+            publishedService: "traefik/traefik"
+        service:
+          type: LoadBalancer
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: traefik
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
