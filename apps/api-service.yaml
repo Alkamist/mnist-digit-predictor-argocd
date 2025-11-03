@@ -44,7 +44,6 @@ spec:
           port: 80
       middlewares:
         - name: cors-headers
-          namespace: default
   tls:
     certResolver: le
 ---
@@ -64,4 +63,3 @@ spec:
           port: 80
       middlewares:
         - name: redirect-to-websecure
-          namespace: default
