@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Alkamist/digit-image-predictor-argocd
-    targetRevision: HEAD
+    targetRevision: local
     path: apps/rabbitmq-instance
   destination:
     server: https://kubernetes.default.svc

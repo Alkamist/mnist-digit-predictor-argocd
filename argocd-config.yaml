@@ -8,7 +8,7 @@ metadata:
 spec:
   source:
     repoURL: https://github.com/Alkamist/digit-image-predictor-argocd
-    targetRevision: HEAD
+    targetRevision: local
     path: apps
   destination:
     server: https://kubernetes.default.svc
