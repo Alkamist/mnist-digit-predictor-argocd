@@ -14,6 +14,7 @@ spec:
     helm:
       values: |
         server:
+          serviceType: LoadBalancer
           replicaCount: 1
           resources:
             limits:
