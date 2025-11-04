@@ -41,7 +41,7 @@ spec:
       kind: Rule
       services:
         - name: digit-image-predictor-app-service
-          port: 8080
+          port: 80
       middlewares:
         - name: cors-headers
   tls: {}
@@ -59,6 +59,6 @@ spec:
       kind: Rule
       services:
         - name: digit-image-predictor-app-service
-          port: 8080
+          port: 80
       middlewares:
         - name: redirect-to-websecure
