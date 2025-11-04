@@ -26,16 +26,6 @@ spec:
             port: 443
             tls:
               enabled: true
-        persistence:
-          enabled: true
-          size: 100Mi
-          name: acme-storage
-        additionalArguments:
-          - "--providers.kubernetesingress.ingressclass=traefik"
-          - "--certificatesresolvers.le.acme.email=business.coreylehman@gmail.com"
-          - "--certificatesresolvers.le.acme.storage=/data/acme.json"
-          - "--certificatesresolvers.le.acme.tlschallenge=true"
-          - "--log.level=INFO" # Set log level to INFO (or DEBUG) for better visibility
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
