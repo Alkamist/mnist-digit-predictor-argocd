@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rabbitmq-instance
+  name: rabbitmq-cluster-operator
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "0" 
 spec:
   project: default
   source:
     repoURL: https://github.com/Alkamist/digit-image-predictor-argocd
-    targetRevision: local
-    path: apps/rabbitmq-instance
+    targetRevision: {{ .Values.app.targetRevision }}
+    path: kustomize/rabbitmq-operator 
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: rabbitmq-system
   syncPolicy:
     automated:
       prune: true

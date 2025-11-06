@@ -1,0 +1,16 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq
+  namespace: default
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  replicas: {{ .Values.rabbitmqCluster.replicas }}
+  resources:
+    requests:
+      cpu: {{ .Values.rabbitmqCluster.resources.requests.cpu }}
+      memory: {{ .Values.rabbitmqCluster.resources.requests.memory }}
+    limits:
+      cpu: {{ .Values.rabbitmqCluster.resources.limits.cpu }}
+      memory: {{ .Values.rabbitmqCluster.resources.limits.memory }}

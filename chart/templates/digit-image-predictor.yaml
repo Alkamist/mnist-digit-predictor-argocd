@@ -12,26 +12,8 @@ spec:
     targetRevision: HEAD
     path: helm-chart
     helm:
-      values: |
-        server:
-          serviceType: LoadBalancer
-          replicaCount: 1
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "100m"
-            requests:
-              memory: "128Mi"
-              cpu: "100m"
-        worker:
-          replicaCount: 1
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "100m"
-            requests:
-              memory: "128Mi"
-              cpu: "100m"
+      valuesObject:
+        {{- toYaml .Values.digitImagePredictor | nindent 8 }}
   destination:
     server: https://kubernetes.default.svc
     namespace: default

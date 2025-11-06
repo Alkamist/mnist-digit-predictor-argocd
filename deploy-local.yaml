@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/background
+spec:
+  source:
+    repoURL: https://github.com/Alkamist/digit-image-predictor-argocd
+    targetRevision: {{ .Values.app.targetRevision }}
+    path: chart
+    helm:
+      valueFiles:
+        - values.yaml
+      values:
+        app:
+          targetRevision: local
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
