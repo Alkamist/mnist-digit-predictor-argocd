@@ -29,7 +29,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: digit-image-predictor-app-service
+            name: digit-image-predictor-service
             port:
               number: 80
 {{- end }}

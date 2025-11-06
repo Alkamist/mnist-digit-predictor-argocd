@@ -8,14 +8,11 @@ metadata:
 spec:
   source:
     repoURL: https://github.com/Alkamist/digit-image-predictor-argocd
-    targetRevision: {{ .Values.app.targetRevision }}
+    targetRevision: local
     path: chart
     helm:
       valueFiles:
         - values.yaml
-      values:
-        app:
-          targetRevision: local
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
