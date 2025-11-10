@@ -1,0 +1,15 @@
+digitImagePredictor:
+  server:
+    serviceType: ClusterIP
+
+nginxIngress:
+  enabled: true
+
+ingress:
+  enabled: true
+
+clusterIssuer:
+  enabled: true
+
+certManager:
+  enabled: true

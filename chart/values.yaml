@@ -1,0 +1,71 @@
+app:
+  targetRevision: HEAD
+
+digitImagePredictor:
+  server:
+    serviceType: LoadBalancer
+    replicaCount: 1
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+  worker:
+    replicaCount: 1
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+
+rabbitmqCluster:
+  replicas: 1
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+nginxIngress:
+  enabled: false
+  controller:
+    service:
+      type: LoadBalancer
+      annotations:
+        service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+    resources:
+      requests:
+        cpu: 100m
+        memory: 90Mi
+      limits:
+        cpu: 200m
+        memory: 180Mi
+    config:
+      use-forwarded-headers: "true"
+      compute-full-forwarded-for: "true"
+
+ingress:
+  enabled: false
+  host: "api.yourapidomain.com"
+  corsOrigin: "https://yourfrontenddomain.com"
+
+clusterIssuer:
+  email: "youremail@example.com"
+
+certManager:
+  enabled: false
+  crds:
+    enabled: true
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
