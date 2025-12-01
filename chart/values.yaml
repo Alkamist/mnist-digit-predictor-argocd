@@ -2,7 +2,7 @@ app:
   targetRevision: HEAD
 
 digitImagePredictor:
-  namespace: digit-image-predictor
+  namespace: app
   server:
     serviceType: LoadBalancer
     replicaCount: 1
