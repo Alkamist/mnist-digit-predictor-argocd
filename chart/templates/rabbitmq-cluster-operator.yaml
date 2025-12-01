@@ -11,7 +11,7 @@ spec:
     path: rabbitmq-cluster-operator
   destination:
     server: https://kubernetes.default.svc
-    namespace: rabbitmq
+    namespace: default
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
