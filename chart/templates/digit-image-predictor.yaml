@@ -16,7 +16,7 @@ spec:
         {{- toYaml .Values.digitImagePredictor | nindent 8 }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: {{ .Values.digitImagePredictor.namespace }}
   syncPolicy:
     automated:
       prune: true
